@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Us - SkyTech Solution</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="components/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: radial-gradient(circle at top right, #0f172a, #020617);
+            color: #f8fafc;
+            margin: 0;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .hero {
+            padding: 100px 20px;
+            text-align: center;
+            background: rgba(15, 23, 42, 0.4);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(14, 165, 233, 0.2);
+            margin-bottom: 60px;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
+        }
+        
+        .hero h1 {
+            font-weight: 800;
+            font-size: 3.5rem;
+            background: linear-gradient(to right, #ffffff, #0ea5e9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .contact-box {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(14, 165, 233, 0.2);
+            border-radius: 24px;
+            padding: 40px;
+            height: 100%;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-box:hover {
+            border-color: #0ea5e9;
+            box-shadow: 0 10px 30px rgba(14, 165, 233, 0.15);
+        }
+        
+        .form-label {
+            color: #94a3b8;
+            font-size: 0.75rem;
+            letter-spacing: 1.5px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .form-control {
+            background: rgba(2, 6, 23, 0.5);
+            border: 1px solid rgba(14, 165, 233, 0.2);
+            color: white;
+            border-radius: 12px;
+            padding: 12px 15px;
+            transition: 0.3s;
+        }
+        
+        .form-control:focus {
+            background: rgba(15, 23, 42, 0.8);
+            border-color: #0ea5e9;
+            box-shadow: 0 0 15px rgba(14, 165, 233, 0.3);
+            color: white;
+        }
+        
+        .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.3);
+        }
+        
+        .input-group-text {
+            background: rgba(2, 6, 23, 0.5);
+            border: 1px solid rgba(14, 165, 233, 0.2);
+            color: #0ea5e9;
+            border-radius: 12px 0 0 12px;
+        }
+        
+        .btn-custom {
+            background: linear-gradient(to right, #0ea5e9, #6366f1);
+            border: none;
+            color: white;
+            padding: 14px;
+            border-radius: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+            width: 100%;
+            margin-top: 10px;
+        }
+        
+        .btn-custom:hover {
+            filter: brightness(1.2);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(14, 165, 233, 0.4);
+        }
+        
+        .info-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .info-list li {
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .icon-circle {
+            width: 45px;
+            height: 45px;
+            background: rgba(14, 165, 233, 0.1);
+            border: 1px solid rgba(14, 165, 233, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0ea5e9;
+            font-size: 1.1rem;
+        }
+        
+        .service-tag {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 6px 14px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.8rem;
+            margin-bottom: 8px;
+            display: inline-block;
+            margin-right: 5px;
+            color: #cbd5e1;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .hero {
+                padding: 60px 20px;
+            }
+            .contact-box {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div id="navbar"></div>
+
+    <div class="hero">
+        <div class="container">
+            <h1>Get In Touch</h1>
+            <p class="opacity-75 mx-auto" style="max-width: 600px;">Have a project in mind or need technical support? Our team of specialists is ready to assist you.</p>
+        </div>
+    </div>
+
+    <div class="container pb-5">
+        <div class="row g-4">
+
+            <div class="col-md-5">
+                <div class="contact-box">
+                    <h4 class="mb-4 fw-bold">Office Information</h4>
+
+                    <ul class="info-list">
+                        <li>
+
+                            <div>
+                                <small class="text-secondary d-block">Location</small>
+                                <span class="">Highlevel road, Maharagama</span>
+                            </div>
+                        </li>
+                        <li>
+
+                            <div>
+                                <small class="text-secondary d-block">Phone</small>
+                                <span class="">+94 77 224 0864</span>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <hr style="border-color: rgba(255,255,255,0.1); margin: 30px 0;">
+
+                    <h6 class="mb-3 text-uppercase small tracking-widest" style="color: #0ea5e9;">Specialized Services</h6>
+                    <div class="d-flex flex-wrap">
+                        <span class="service-tag">Air Conditioning</span>
+                        <span class="service-tag">CCTV Security</span>
+                        <span class="service-tag">Enterprise Networking</span>
+                        <span class="service-tag">System Integration</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-7">
+                <div class="contact-box">
+                    <h4 class="mb-4 fw-bold">Send a Message</h4>
+
+                    <form action="#" method="POST">
+                        <div class="row">
+
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label text-uppercase">Full Name</label>
+                                <input type="text" class="form-control" placeholder="John Doe" required>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label text-uppercase">Contact Number</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                                    <input type="tel" class="form-control border-start-0" placeholder="+94 77 000 0000" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label text-uppercase">Email Address</label>
+                                <input type="email" class="form-control" placeholder="john@skytech.com" required>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label text-uppercase">Type of Message</label>
+                                <select class="form-select text-white" style="background-color: rgba(2, 6, 23, 0.5); border: 1px solid rgba(14, 165, 233, 0.2); border-radius: 12px;">
+        <option selected disabled>Select Category</option>
+        <option value="technical" class="text-dark">Technical Issue</option>
+        <option value="details" class="text-dark">Get Details</option>
+        <option value="inquiry" class="text-dark">Service Inquiry</option>
+    </select>
+                            </div>
+                        </div>
+                        <div class="row">
+
+
+
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label text-uppercase">Subject</label>
+                                <input type="text" class="form-control" placeholder="Service Inquiry">
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label text-uppercase">Your Message</label>
+                            <textarea class="form-control" rows="5" placeholder="Tell us more about your requirements..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-custom">
+                            <i class="fas fa-paper-plane me-2"></i> Dispatch Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="footer"></div>
+
+    <script src="components/bootstrap.bundle.min.js"></script>
+    <script src="include.js"></script>
+
+</body>
+
+</html>

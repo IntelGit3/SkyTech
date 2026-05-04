@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>SkyTech | Professional Quotation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="components/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background: radial-gradient(circle at top right, #0f172a, #020617);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Poppins', sans-serif;
+            color: #f8fafc;
+            padding: 20px;
+        }
+        
+        .quotation-box {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            padding: 40px;
+            border-radius: 24px;
+            width: 100%;
+            max-width: 550px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 20px rgba(14, 165, 233, 0.1);
+            border: 1px solid rgba(14, 165, 233, 0.2);
+        }
+        
+        .quotation-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .quotation-header h3 {
+            font-weight: 800;
+            background: linear-gradient(to right, #ffffff, #0ea5e9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        
+        .quotation-header p {
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+        
+        .form-label {
+            color: #cbd5e1;
+            font-weight: 500;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+        
+        .form-control,
+        .form-select {
+            background: rgba(2, 6, 23, 0.5);
+            border: 1px solid rgba(14, 165, 233, 0.3);
+            color: white;
+            border-radius: 12px;
+            padding: 12px;
+            transition: all 0.3s;
+        }
+        
+        .form-control:focus,
+        .form-select:focus {
+            background: rgba(2, 6, 23, 0.8);
+            border-color: #0ea5e9;
+            box-shadow: 0 0 10px rgba(14, 165, 233, 0.3);
+            color: white;
+        }
+        
+        .form-control::placeholder {
+            color: #475569;
+        }
+        
+        .result-container {
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.1), rgba(99, 102, 241, 0.1));
+            border: 1px dashed #0ea5e9;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 25px;
+            text-align: center;
+            display: none;
+        }
+        
+        .total-price {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #0ea5e9;
+            text-shadow: 0 0 15px rgba(14, 165, 233, 0.4);
+        }
+        
+        .discount-badge {
+            background: #10b981;
+            color: white;
+            font-size: 0.75rem;
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+        
+        .btn-custom {
+            background: linear-gradient(to right, #0ea5e9, #6366f1);
+            border: none;
+            color: white;
+            font-weight: 700;
+            border-radius: 12px;
+            padding: 14px;
+            width: 100%;
+            margin-top: 10px;
+            transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .btn-custom:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(14, 165, 233, 0.4);
+            filter: brightness(1.1);
+        }
+        
+        @media (max-width: 576px) {
+            .quotation-box {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="quotation-box">
+        <div class="quotation-header">
+            <h3><i class="bi bi-file-earmark-text me-2"></i>Quotation</h3>
+            <div style="width: 50px; height: 3px; background: #0ea5e9; margin: 10px auto; border-radius: 2px;"></div>
+            <p>Generate smart technology estimates for your clients.</p>
+        </div>
+
+        <form id="quotationForm">
+            <div class="row">
+                <div class="col-md-12 mb-3">
+                    <label class="form-label">Category</label>
+                    <select id="typeSelect" class="form-select" required>
+                        <option value="">Select Category</option>
+                        <option value="ac">Air Conditioning</option>
+                        <option value="cctv">CCTV Surveillance</option>
+                        <option value="network">Networking Solutions</option>
+                    </select>
+                </div>
+
+                <div class="col-md-12 mb-3">
+                    <label class="form-label">Device Model</label>
+                    <select id="deviceSelect" class="form-select" required>
+                        <option value="">Select Device</option>
+                    </select>
+                </div>
+
+                <div class="col-6 mb-3">
+                    <label class="form-label">Quantity</label>
+                    <input type="number" id="quantityInput" class="form-control" placeholder="0" min="1" required>
+                </div>
+
+                <div class="col-6 mb-3">
+                    <label class="form-label">Unit Price (Rs.)</label>
+                    <input type="text" id="priceInput" class="form-control" placeholder="0.00" readonly>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-custom">
+                Generate Total <i class="bi bi-calculator ms-2"></i>
+            </button>
+        </form>
+
+        <div id="resultBox" class="result-container">
+
+            <p class="text-uppercase mb-1" style="font-size: 0.8rem; color: #94a3b8; letter-spacing: 1px;">Total Estimate</p>
+            <div id="totalDisplay" class="total-price">Rs. .00</div>
+        </div>
+    </div>
+
+    <script src="Productjs/products-data.js"></script>
+
+    <script src="Productjs/quotation.js"></script>
+</body>
+
+</html>
