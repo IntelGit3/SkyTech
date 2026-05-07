@@ -1,12 +1,14 @@
-function loadComponent(id , file) {
+function loadComponent(id, file) {
+    if (!file) return;
     fetch(file)
-        .then(res => res.text())
-        .then(data => 
-            document.getElementById(id).innerHTML = data
-        );
+        .then(res => {
+            if (!res.ok) throw new Error(res.status + ' ' + res.statusText);
+            return res.text();
+        })
+        .then(data => document.getElementById(id).innerHTML = data)
+        .catch(err => console.error('Error loading component', file, err));
 }
 
-loadComponent("navbar" , "Components/navbar.html");
-loadComponent("footer" , "Components/footer.html");
-loadComponent("product", "Components/product-item.html")
-loadComponent("product-details",)
+loadComponent("navbar", "components/navbar.html");
+loadComponent("footer", "components/footer.html");
+loadComponent("product", "components/product-item.html");
