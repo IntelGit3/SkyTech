@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkyTech | Product Details</title>
+
+    <link rel="stylesheet" href="components/bootstrap.min.css">
+
+
+    <style>
+        @font-face {
+            font-family: 'Poppins';
+            src: local('Poppins'), local('sans-serif');
+        }
+        
+        body {
+            background: radial-gradient(circle at top right, #0f172a, #020617);
+            min-height: 100vh;
+            color: #f8fafc;
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 40px 20px;
+        }
+        
+        .details-wrapper {
+            background: rgba(30, 41, 59, 0.5);
+            border-radius: 32px;
+            padding: 40px;
+            border: 1px solid rgba(14, 165, 233, 0.2);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+            margin-top: 20px;
+        }
+        
+        .product-image-container {
+            background: rgba(2, 6, 23, 0.4);
+            border-radius: 24px;
+            padding: 30px;
+            border: 1px solid rgba(14, 165, 233, 0.1);
+        }
+        
+        #p-image {
+            width: 100%;
+            max-height: 400px;
+            object-fit: contain;
+            transition: transform 0.4s ease;
+        }
+        
+        #p-image:hover {
+            transform: scale(1.03);
+        }
+        
+        h1#p-name {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 5px;
+        }
+        
+        .price-tag {
+            font-size: 2.3rem;
+            color: #38bdf8;
+            font-weight: 700;
+            margin-bottom: 25px;
+        }
+        
+        .section-title {
+            color: #94a3b8;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-left: 4px solid #0ea5e9;
+            padding-left: 10px;
+            margin-bottom: 20px;
+            margin-top: 30px;
+        }
+        
+        .spec-item {
+            background: rgba(15, 23, 42, 0.6);
+            padding: 12px 18px;
+            border-radius: 12px;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .spec-label {
+            color: #64748b;
+            font-weight: 500;
+        }
+        
+        .spec-value {
+            color: #f1f5f9;
+            font-weight: 600;
+        }
+        
+        .feature-item {
+            background: rgba(16, 185, 129, 0.1);
+            padding: 12px;
+            border-radius: 10px;
+            border-right: 3px solid #10b981;
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+        
+        .feature-dot {
+            height: 8px;
+            width: 8px;
+            background-color: #10b981;
+            border-radius: 50%;
+            margin-right: 12px;
+            display: inline-block;
+        }
+        
+        .btn-buy {
+            background: #0ea5e9;
+            color: white;
+            padding: 16px 40px;
+            border-radius: 16px;
+            font-weight: 600;
+            border: none;
+            width: 100%;
+            margin-top: 20px;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        
+        .btn-buy:hover {
+            background: #0284c7;
+            box-shadow: 0 10px 20px rgba(14, 165, 233, 0.3);
+        }
+        
+        .back-link {
+            color: #94a3b8;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .back-link:hover {
+            color: #38bdf8;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="navbar"></div>
+
+    <div class="container">
+
+        <a href="index.html" class="back-link" id="dynamic-back-btn"> ← Back to Products</a>
+        <div class="details-wrapper">
+            <div class="row g-5 align-items-start">
+
+
+                <div class="col-lg-5">
+                    <div class="product-image-container text-center">
+                        <img id="p-image" src="" alt="Product Image">
+                    </div>
+
+                </div>
+
+
+                <div class="col-lg-7">
+                    <h1 id="p-name">Product Name</h1>
+                    <div class="price-tag" id="p-price">Rs. 0.00</div>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <h4 class="section-title">Specifications</h4>
+                            <div id="specs-container"></div>
+                        </div>
+
+                        <div class="col-12 mt-2">
+                            <h4 class="section-title">Highlights</h4>
+                            <div id="features-container" class="row row-cols-1 row-cols-md-2 g-2"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <script src="Productjs/products-data.js"></script>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get('id');
+        const product = PRODUCTS_MASTER[productId];
+
+        if (product) {
+            document.getElementById('p-name').innerText = product.name;
+            document.getElementById('p-image').src = product.image;
+
+            let rawPrice = product.price.toString().replace(/,/g, '').replace('Rs.', '').trim();
+            let cleanPrice = parseFloat(rawPrice);
+            document.getElementById('p-price').innerText = "Rs. " + cleanPrice.toLocaleString('en-US', {
+                minimumFractionDigits: 2
+            });
+
+
+            let specsHtml = '';
+            for (let [key, value] of Object.entries(product.specs)) {
+                specsHtml += `
+                    <div class="spec-item">
+                        <span class="spec-label">${key.toUpperCase().replace('_', ' ')}</span> 
+                        <span class="spec-value">${value}</span>
+                    </div>`;
+            }
+            document.getElementById('specs-container').innerHTML = specsHtml;
+
+
+            let featuresHtml = '';
+            product.features.forEach(f => {
+                featuresHtml += `
+                    <div class="col">
+                        <div class="feature-item">
+                            <span class="feature-dot"></span>
+                            <span class="small">${f}</span>
+                        </div>
+                    </div>`;
+            });
+            document.getElementById('features-container').innerHTML = featuresHtml;
+
+        } else {
+            document.querySelector('.container').innerHTML = `
+                <div class='text-center mt-5'>
+                    <h2 class='text-danger'>Product Not Found</h2>
+                    <a href='index.html' class='btn btn-outline-info mt-3'>Return to Home</a>
+                </div>`;
+        }
+
+        const backBtn = document.getElementById('dynamic-back-btn');
+
+        if (product.category === 'ac') {
+            backBtn.href = 'ac.html';
+        } else if (product.category === 'network') {
+            backBtn.href = 'network.html';
+        } else if (product.category === 'cctv') {
+            backBtn.href = 'cctv.html';
+        }
+    </script>
+
+</body>
+
+</html>
